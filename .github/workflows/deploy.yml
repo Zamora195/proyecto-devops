@@ -1,0 +1,27 @@
+name: Pipeline CI/CD
+
+on:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+      
+      - name: Construir imagen Docker
+        run: docker build -t mi-app .
+      
+      - name: Probar contenedor
+        run: |
+          docker run -d -p 8080:80 --name test mi-app
+          sleep 3
+          curl http://localhost:8080
+          docker stop test
+          docker rm test
+      
+      - name: Prueba exitosa
+        run: echo "✅ Pipeline funcionando correctamente"
