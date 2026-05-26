@@ -1,27 +1,50 @@
-name: Pipeline CI/CD
+name: CI/CD Pipeline - Despliegue Automático a Azure
 
 on:
   push:
     branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
-    
     steps:
-      - name: Clonar repositorio
+      - name:  Clonar repositorio
         uses: actions/checkout@v3
       
-      - name: Construir imagen Docker
+      - name:  Construir imagen Docker
         run: docker build -t mi-app .
       
-      - name: Probar contenedor
+      - name:  Probar contenedor
         run: |
-          docker run -d -p 8080:80 --name test mi-app
+          docker run -d -p 8080:80 --name test-container mi-app
           sleep 3
-          curl http://localhost:8080
-          docker stop test
-          docker rm test
+          curl --fail http://localhost:8080 || exit 1
+          echo " Prueba exitosa"
+          docker stop test-container
+          docker rm test-container
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+      - name:  Clonar repositorio
+        uses: actions/checkout@v3
       
-      - name: Prueba exitosa
-        run: echo "✅ Pipeline funcionando correctamente"
+      - name:  Desplegar a Azure VM
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.AZURE_VM_IP }}
+          username: ${{ secrets.AZURE_USER }}
+          password: ${{ secrets.AZURE_PASSWORD }}
+          script: |
+            cd /home/azureuser/proyecto-devops || git clone https://github.com/Zamora195/proyecto-devops.git /home/azureuser/proyecto-devops
+            cd /home/azureuser/proyecto-devops
+            git pull
+            docker stop mi-app || true
+            docker rm mi-app || true
+            docker build -t mi-app .
+            docker run -d -p 80:80 --name mi-app mi-app
+            echo "Despliegue completado"
