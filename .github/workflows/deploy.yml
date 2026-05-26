@@ -6,37 +6,30 @@ on:
   workflow_dispatch:
 
 jobs:
-  # JOB 1: Build (lo tenías)
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    
     steps:
+      # 1. Clonar repositorio
       - name:  Clonar repositorio
         uses: actions/checkout@v3
       
-      - name:  Construir imagen Docker
+      # 2. Construir imagen Docker
+      - name: Construir imagen Docker
         run: docker build -t mi-app .
       
+      # 3. Probar contenedor
       - name:  Probar contenedor
         run: |
           docker run -d -p 8080:80 --name test-container mi-app
           sleep 3
           curl --fail http://localhost:8080 || exit 1
-          echo " Prueba exitosa"
+          echo "Prueba exitosa"
           docker stop test-container
           docker rm test-container
-
-  # JOB 2: Escaneo de vulnerabilidades (NUEVO)
-  security:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name:  Clonar repositorio
-        uses: actions/checkout@v3
       
-      - name:  Construir imagen Docker
-        run: docker build -t mi-app .
-      
-      - name:  Escaneo de vulnerabilidades con Trivy
+      # 4. Escaneo de vulnerabilidades (Trivy)
+      - name: Escaneo de vulnerabilidades
         uses: aquasecurity/trivy-action@0.28.0
         with:
           image-ref: mi-app
@@ -44,44 +37,22 @@ jobs:
           exit-code: 0
           severity: CRITICAL
       
-      - name:  Escaneo completado
-        run: echo "Escaneo de vulnerabilidades finalizado"
-
-  # JOB 3: Publicar a Docker Hub (NUEVO)
-  publish:
-    needs: security
-    runs-on: ubuntu-latest
-    steps:
-      - name:  Clonar repositorio
-        uses: actions/checkout@v3
-      
-      - name:  Login a Docker Hub
+      # 5. Publicar a Docker Hub
+      - name: Publicar imagen a Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       
-      - name:  Construir y publicar imagen
+      - name: Build y push a Docker Hub
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/mi-app:latest
       
-      - name:  Publicación completada
-        run: echo "Imagen publicada en Docker Hub"
-
-  # JOB 4: Desplegar a Azure (lo tenías)
-  deploy:
-    needs: publish
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    
-    steps:
-      - name:  Clonar repositorio
-        uses: actions/checkout@v3
-      
-      - name:  Desplegar a Azure VM
+      # 6. Desplegar a Azure VM
+      - name: Desplegar a Azure VM
         uses: appleboy/ssh-action@v0.1.5
         with:
           host: ${{ secrets.AZURE_VM_IP }}
@@ -91,8 +62,8 @@ jobs:
             cd /home/azureuser/proyecto-devops || git clone https://github.com/Zamora195/proyecto-devops.git /home/azureuser/proyecto-devops
             cd /home/azureuser/proyecto-devops
             git pull
+            docker pull ${{ secrets.DOCKER_USERNAME }}/mi-app:latest
             docker stop mi-app || true
             docker rm mi-app || true
-            docker build -t mi-app .
-            docker run -d -p 80:80 --name mi-app mi-app
-            echo " Despliegue completado"
+            docker run -d -p 80:80 --name mi-app ${{ secrets.DOCKER_USERNAME }}/mi-app:latest
+            echo "Despliegue completado"
