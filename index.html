@@ -3,30 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto DevOps - Jefferson Adolfo Zamora López</title>
+    <title>Adolfo's Sport - Camisolas de Fútbol</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1> Proyecto DevOps</h1>
-        <h2>Sistemas Operativos II</h2>
-        <h3>Jefferson Adolfo Zamora López</h3>
-        
-        <div class="status">
-             Infraestructura funcionando correctamente
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/50242723610" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header / Hero Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="logo">
+                    <i class="fas fa-futbol"></i>
+                    <h1>Adolfo's <span>Sport</span></h1>
+                </div>
+                <p class="tagline">⚽ ¡Somos tu mejor opción para conseguir las mejores camisolas de fútbol! 🔥</p>
+                <p class="subtagline">Encontrarás calidad, estilo y pasión por el deporte que amamos.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn-primary"><i class="fas fa-shopping-cart"></i> Ver Camisolas</a>
+                    <a href="#contact" class="btn-secondary"><i class="fas fa-phone"></i> Contáctanos</a>
+                </div>
+            </div>
         </div>
-        
-        <div class="info">
-            <p> <strong>Tecnologías:</strong> Docker, GitHub Actions, GCP</p>
-            <p> <strong>Pipeline:</strong> CI/CD Automatizado</p>
-            <p> <strong>Nube:</strong> Google Cloud Platform</p>
-            <p> <strong>Fecha:</strong> 25/05/2026</p>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-shirt"></i>
+                    <h3>👕 Equipos y Selecciones</h3>
+                    <p>Las mejores camisolas de tus equipos favoritos</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-fire"></i>
+                    <h3>🔥 Versión Fan y Jugador</h3>
+                    <p>Calidad profesional al mejor precio</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-medal"></i>
+                    <h3>💯 Excelente Calidad</h3>
+                    <p>Materiales premium y acabados perfectos</p>
+                </div>
+            </div>
         </div>
-        
-        <div class="footer">
-            <p> Desplegado automáticamente con GitHub Actions</p>
-            <p> Despliegue automático funcionando correctamente</p>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">⚡ Nuestras Camisolas ⚡</h2>
+            <p class="section-subtitle">Las mejores camisetas de fútbol al alcance de tu mano</p>
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be loaded here -->
+            </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">📞 Contáctanos</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Ubicación</h4>
+                            <p>Antigua Guatemala, Sacatepéquez, Guatemala, 03001</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fab fa-instagram"></i>
+                        <div>
+                            <h4>Instagram</h4>
+                            <p><a href="https://instagram.com/adolfos_sport" target="_blank">@adolfos_sport</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p><a href="tel:+50242723610">+502 4272 3610</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p><a href="mailto:adolfosportgt@gmail.com">adolfosportgt@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Tu nombre" required>
+                        <input type="email" placeholder="Tu email" required>
+                        <textarea rows="4" placeholder="¿Qué camisola te interesa?"></textarea>
+                        <button type="submit" class="btn-primary"><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo-footer">
+                    <i class="fas fa-futbol"></i>
+                    <h3>Adolfo's <span>Sport</span></h3>
+                </div>
+                <p class="footer-tagline">⚽🔥 ¡Somos tu mejor opción para conseguir las mejores camisolas de fútbol! 🔥⚽</p>
+                <div class="social-links">
+                    <a href="https://instagram.com/adolfos_sport" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/50242723610" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:adolfosportgt@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p class="copyright">&copy; 2026 Adolfo's Sport. Todos los derechos reservados. | Calidad, estilo y pasión por el deporte ⚽</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Productos de Adolfo's Sport
+        const products = [
+            { name: "🇦🇷 Argentina 2024", price: "Q350", image: "https://via.placeholder.com/300x300?text=Argentina+2024", fan: true, player: true },
+            { name: "🇫🇷 Francia 2024", price: "Q350", image: "https://via.placeholder.com/300x300?text=Francia+2024", fan: true, player: true },
+            { name: "🇧🇷 Brasil 2024", price: "Q350", image: "https://via.placeholder.com/300x300?text=Brasil+2024", fan: true, player: true },
+            { name: "🇪🇸 España 2024", price: "Q350", image: "https://via.placeholder.com/300x300?text=España+2024", fan: true, player: true },
+            { name: "🇩🇪 Alemania 2024", price: "Q350", image: "https://via.placeholder.com/300x300?text=Alemania+2024", fan: true, player: true },
+            { name: "🇵🇹 Portugal 2024", price: "Q350", image: "https://via.placeholder.com/300x300?text=Portugal+2024", fan: true, player: true }
+        ];
+
+        const productsGrid = document.getElementById('products-grid');
+        
+        products.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.innerHTML = `
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="product-badge">🔥 Hot</div>
+                </div>
+                <div class="product-info">
+                    <h3>${product.name}</h3>
+                    <div class="product-versions">
+                        ${product.fan ? '<span class="version-badge fan">Versión Fan</span>' : ''}
+                        ${product.player ? '<span class="version-badge player">Versión Jugador</span>' : ''}
+                    </div>
+                    <div class="product-price">${product.price}</div>
+                    <a href="https://wa.me/50242723610?text=Hola!%20Me%20interesa%20la%20camisola%20${encodeURIComponent(product.name)}" class="btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Comprar
+                    </a>
+                </div>
+            `;
+            productsGrid.appendChild(productCard);
+        });
+
+        // Contact Form
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nombre = this.querySelector('input[placeholder="Tu nombre"]').value;
+            const email = this.querySelector('input[placeholder="Tu email"]').value;
+            const mensaje = this.querySelector('textarea').value;
+            const whatsappUrl = `https://wa.me/50242723610?text=Hola!%20Soy%20${encodeURIComponent(nombre)}.%20${encodeURIComponent(mensaje)}.%20Mi%20email:%20${encodeURIComponent(email)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
 </body>
 </html>
