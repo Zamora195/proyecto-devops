@@ -14,17 +14,14 @@ provider "azurerm" {
   features {}
 }
 
-# ============================================
 # 1. GRUPO DE RECURSOS
-# ============================================
 resource "azurerm_resource_group" "rg" {
   name     = "terraform-jefferson-rg"
   location = "West US 2"
 }
 
-# ============================================
+
 # 2. RED VIRTUAL (VNet)
-# ============================================
 resource "azurerm_virtual_network" "vnet" {
   name                = "terraform-jefferson-vnet"
   location            = azurerm_resource_group.rg.location
@@ -32,9 +29,8 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = ["10.0.0.0/16"]
 }
 
-# ============================================
+
 # 3. SUBNET
-# ============================================
 resource "azurerm_subnet" "subnet" {
   name                 = "terraform-jefferson-subnet"
   resource_group_name  = azurerm_resource_group.rg.name
@@ -42,9 +38,8 @@ resource "azurerm_subnet" "subnet" {
   address_prefixes     = ["10.0.1.0/24"]
 }
 
-# ============================================
+
 # 4. IP PÚBLICA
-# ============================================
 resource "azurerm_public_ip" "public_ip" {
   name                = "terraform-jefferson-ip"
   resource_group_name = azurerm_resource_group.rg.name
@@ -53,9 +48,8 @@ resource "azurerm_public_ip" "public_ip" {
   sku                 = "Standard"
 }
 
-# ============================================
+
 # 5. GRUPO DE SEGURIDAD (FIREWALL - NSG)
-# ============================================
 resource "azurerm_network_security_group" "nsg" {
   name                = "terraform-jefferson-nsg"
   location            = azurerm_resource_group.rg.location
@@ -98,9 +92,8 @@ resource "azurerm_network_security_group" "nsg" {
   }
 }
 
-# ============================================
+
 # 6. INTERFAZ DE RED (NIC)
-# ============================================
 resource "azurerm_network_interface" "nic" {
   name                = "terraform-jefferson-nic"
   location            = azurerm_resource_group.rg.location
@@ -120,9 +113,8 @@ resource "azurerm_network_interface_security_group_association" "nic_nsg" {
   network_security_group_id = azurerm_network_security_group.nsg.id
 }
 
-# ============================================
+
 # 7. MÁQUINA VIRTUAL (VM)
-# ============================================
 resource "azurerm_linux_virtual_machine" "vm" {
   name                = "terraform-jefferson-vm"
   resource_group_name = azurerm_resource_group.rg.name
@@ -155,9 +147,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
   }
 }
 
-# ============================================
+
 # 8. OUTPUTS (mostrar resultados)
-# ============================================
 output "public_ip" {
   description = "IP pública de la VM"
   value       = azurerm_public_ip.public_ip.ip_address
