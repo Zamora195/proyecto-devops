@@ -4,70 +4,419 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adolfo's Sport - Camisolas de Fútbol</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="description" content="Camisolas de fútbol de alta calidad. Barcelona, Guatemala y más. Envíos a toda Guatemala.">
+    <meta name="keywords" content="camisolas, fútbol, Adolfo's Sport, Guatemala, Barcelona">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background: #128C7E;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.7));
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero-logo h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ffd700, #ff6b00);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .tagline {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 20px 0;
+            color: #ffd700;
+        }
+
+        .subtagline {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: #ffd700;
+            color: #1a1a2e;
+        }
+
+        .btn-primary:hover {
+            background: #ffed4a;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #ffd700;
+            border: 2px solid #ffd700;
+        }
+
+        .btn-secondary:hover {
+            background: #ffd700;
+            color: #1a1a2e;
+            transform: translateY(-3px);
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background: #0f0f1a;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #ffd700;
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        /* Products */
+        .products {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #ccc;
+            margin-bottom: 50px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,215,0,0.2);
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: #ffd700;
+            box-shadow: 0 10px 30px rgba(255,215,0,0.1);
+        }
+
+        .product-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: rgba(255,215,0,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-icon i {
+            font-size: 3.5rem;
+            color: #ffd700;
+        }
+
+        .product-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .product-versions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .version-badge {
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 15px;
+        }
+
+        .version-badge.fan {
+            background: rgba(0,255,0,0.2);
+            color: #0f0;
+            border: 1px solid #0f0;
+        }
+
+        .version-badge.player {
+            background: rgba(255,215,0,0.2);
+            color: #ffd700;
+            border: 1px solid #ffd700;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #25D366;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+            background: #0f0f1a;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: #ffd700;
+            width: 40px;
+        }
+
+        .info-item a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .info-item a:hover {
+            color: #ffd700;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: #ffd700;
+        }
+
+        .contact-form button {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 50px 0 20px;
+            background: #0a0a0a;
+            text-align: center;
+            border-top: 1px solid rgba(255,215,0,0.2);
+        }
+
+        .footer p {
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-logo h1 { font-size: 2rem; }
+            .tagline { font-size: 1rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .section-title { font-size: 1.8rem; }
+        }
+    </style>
 </head>
 <body>
-    <!-- WhatsApp Float -->
     <a href="https://wa.me/50242723610" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Header / Hero Section -->
     <header class="hero">
-        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="logo">
-                    <i class="fas fa-futbol"></i>
-                    <h1>Adolfo's <span>Sport</span></h1>
+                <div class="hero-logo">
+                    <h1>ADOLFO'S SPORT</h1>
                 </div>
-                <p class="tagline">⚽ ¡Somos tu mejor opción para conseguir las mejores camisolas de fútbol! 🔥</p>
-                <p class="subtagline">Encontrarás calidad, estilo y pasión por el deporte que amamos.</p>
+                <p class="tagline">⚡ La Elegancia del Fútbol ⚡</p>
+                <p class="subtagline">Camisolas Premium | Versiones Fan | Envíos a toda Guatemala</p>
                 <div class="hero-buttons">
-                    <a href="#products" class="btn-primary"><i class="fas fa-shopping-cart"></i> Ver Camisolas</a>
-                    <a href="#contact" class="btn-secondary"><i class="fas fa-phone"></i> Contáctanos</a>
+                    <a href="#products" class="btn-primary"><i class="fas fa-shopping-cart"></i> Ver Catálogo</a>
+                    <a href="#contact" class="btn-secondary"><i class="fab fa-whatsapp"></i> Contactar</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Features Section -->
     <section class="features">
         <div class="container">
+            <h2 class="section-title">¿Por qué comprar en Adolfo's Sport?</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <i class="fas fa-shirt"></i>
-                    <h3>👕 Equipos y Selecciones</h3>
-                    <p>Las mejores camisolas de tus equipos favoritos</p>
+                    <i class="fas fa-star"></i>
+                    <h3>Calidad Premium</h3>
+                    <p>Camisolas con excelentes acabados y detalles.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fas fa-fire"></i>
-                    <h3>🔥 Versión Fan y Jugador</h3>
-                    <p>Calidad profesional al mejor precio</p>
+                    <i class="fas fa-futbol"></i>
+                    <h3>Equipos y Selecciones</h3>
+                    <p>Barcelona, Guatemala y muchos más.</p>
                 </div>
                 <div class="feature-card">
-                    <i class="fas fa-medal"></i>
-                    <h3>💯 Excelente Calidad</h3>
-                    <p>Materiales premium y acabados perfectos</p>
+                    <i class="fas fa-truck"></i>
+                    <h3>Envíos Nacionales</h3>
+                    <p>Realizamos envíos a toda Guatemala.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Products Section -->
     <section id="products" class="products">
         <div class="container">
-            <h2 class="section-title">⚡ Nuestras Camisolas ⚡</h2>
-            <p class="section-subtitle">Las mejores camisetas de fútbol al alcance de tu mano</p>
-            <div class="products-grid" id="products-grid">
-                <!-- Products will be loaded here -->
-            </div>
+            <h2 class="section-title">⚡ <span>Nuestras</span> Camisolas ⚡</h2>
+            <p class="section-subtitle">Calidad, estilo y pasión por el deporte que amamos</p>
+            <div class="products-grid" id="products-grid"></div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">📞 Contáctanos</h2>
@@ -75,73 +424,47 @@
                 <div class="contact-info">
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Ubicación</h4>
-                            <p>Antigua Guatemala, Sacatepéquez, Guatemala, 03001</p>
-                        </div>
+                        <div><h4>Ubicación</h4><p>Antigua Guatemala, Sacatepéquez, Guatemala, 03001</p></div>
                     </div>
                     <div class="info-item">
                         <i class="fab fa-instagram"></i>
-                        <div>
-                            <h4>Instagram</h4>
-                            <p><a href="https://instagram.com/adolfos_sport" target="_blank">@adolfos_sport</a></p>
-                        </div>
+                        <div><h4>Instagram</h4><p><a href="https://instagram.com/adolfos_sport" target="_blank">@adolfos_sport</a></p></div>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Teléfono</h4>
-                            <p><a href="tel:+50242723610">+502 4272 3610</a></p>
-                        </div>
+                        <div><h4>Teléfono / WhatsApp</h4><p><a href="https://wa.me/50242723610">+502 4272 3610</a></p></div>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p><a href="mailto:adolfosportgt@gmail.com">adolfosportgt@gmail.com</a></p>
-                        </div>
+                        <div><h4>Email</h4><p><a href="mailto:adolfosportgt@gmail.com">adolfosportgt@gmail.com</a></p></div>
                     </div>
                 </div>
                 <div class="contact-form">
                     <form id="contactForm">
-                        <input type="text" placeholder="Tu nombre" required>
-                        <input type="email" placeholder="Tu email" required>
-                        <textarea rows="4" placeholder="¿Qué camisola te interesa?"></textarea>
-                        <button type="submit" class="btn-primary"><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</button>
+                        <input type="text" placeholder="Tu nombre" required id="nombre">
+                        <input type="email" placeholder="Tu email" required id="email">
+                        <textarea rows="4" placeholder="¿Qué camisola te interesa?" id="mensaje"></textarea>
+                        <button type="submit" class="btn-primary"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="logo-footer">
-                    <i class="fas fa-futbol"></i>
-                    <h3>Adolfo's <span>Sport</span></h3>
-                </div>
-                <p class="footer-tagline">⚽🔥 ¡Somos tu mejor opción para conseguir las mejores camisolas de fútbol! 🔥⚽</p>
-                <div class="social-links">
-                    <a href="https://instagram.com/adolfos_sport" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/50242723610" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="mailto:adolfosportgt@gmail.com"><i class="fas fa-envelope"></i></a>
-                </div>
-                <p class="copyright">&copy; 2026 Adolfo's Sport. Todos los derechos reservados. | Calidad, estilo y pasión por el deporte ⚽</p>
-            </div>
+            <p>&copy; 2026 Adolfo's Sport. Todos los derechos reservados. | Calidad, estilo y pasión por el deporte ⚽</p>
         </div>
     </footer>
 
     <script>
-        // Productos de Adolfo's Sport
         const products = [
-            { name: "🇦🇷 Argentina 2024", price: "Q350", image: "https://via.placeholder.com/300x300?text=Argentina+2024", fan: true, player: true },
-            { name: "🇫🇷 Francia 2024", price: "Q350", image: "https://via.placeholder.com/300x300?text=Francia+2024", fan: true, player: true },
-            { name: "🇧🇷 Brasil 2024", price: "Q350", image: "https://via.placeholder.com/300x300?text=Brasil+2024", fan: true, player: true },
-            { name: "🇪🇸 España 2024", price: "Q350", image: "https://via.placeholder.com/300x300?text=España+2024", fan: true, player: true },
-            { name: "🇩🇪 Alemania 2024", price: "Q350", image: "https://via.placeholder.com/300x300?text=Alemania+2024", fan: true, player: true },
-            { name: "🇵🇹 Portugal 2024", price: "Q350", image: "https://via.placeholder.com/300x300?text=Portugal+2024", fan: true, player: true }
+            { name: "🇦🇷 Argentina 2024", price: "Q350", fan: true, player: true },
+            { name: "🇫🇷 Francia 2024", price: "Q350", fan: true, player: true },
+            { name: "🇧🇷 Brasil 2024", price: "Q350", fan: true, player: true },
+            { name: "🇪🇸 España 2024", price: "Q350", fan: true, player: true },
+            { name: "🇩🇪 Alemania 2024", price: "Q350", fan: true, player: true },
+            { name: "🇵🇹 Portugal 2024", price: "Q350", fan: true, player: true }
         ];
 
         const productsGrid = document.getElementById('products-grid');
@@ -150,31 +473,27 @@
             const productCard = document.createElement('div');
             productCard.className = 'product-card';
             productCard.innerHTML = `
-                <div class="product-image">
-                    <img src="${product.image}" alt="${product.name}">
-                    <div class="product-badge">🔥 Hot</div>
+                <div class="product-icon">
+                    <i class="fas fa-tshirt"></i>
                 </div>
-                <div class="product-info">
-                    <h3>${product.name}</h3>
-                    <div class="product-versions">
-                        ${product.fan ? '<span class="version-badge fan">Versión Fan</span>' : ''}
-                        ${product.player ? '<span class="version-badge player">Versión Jugador</span>' : ''}
-                    </div>
-                    <div class="product-price">${product.price}</div>
-                    <a href="https://wa.me/50242723610?text=Hola!%20Me%20interesa%20la%20camisola%20${encodeURIComponent(product.name)}" class="btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Comprar
-                    </a>
+                <h3>${product.name}</h3>
+                <div class="product-versions">
+                    ${product.fan ? '<span class="version-badge fan">Versión Fan</span>' : ''}
+                    ${product.player ? '<span class="version-badge player">Versión Jugador</span>' : ''}
                 </div>
+                <div class="product-price">${product.price}</div>
+                <a href="https://wa.me/50242723610?text=Hola!%20Me%20interesa%20la%20camisola%20${encodeURIComponent(product.name)}" class="btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Comprar
+                </a>
             `;
             productsGrid.appendChild(productCard);
         });
 
-        // Contact Form
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const nombre = this.querySelector('input[placeholder="Tu nombre"]').value;
-            const email = this.querySelector('input[placeholder="Tu email"]').value;
-            const mensaje = this.querySelector('textarea').value;
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const mensaje = document.getElementById('mensaje').value;
             const whatsappUrl = `https://wa.me/50242723610?text=Hola!%20Soy%20${encodeURIComponent(nombre)}.%20${encodeURIComponent(mensaje)}.%20Mi%20email:%20${encodeURIComponent(email)}`;
             window.open(whatsappUrl, '_blank');
         });
